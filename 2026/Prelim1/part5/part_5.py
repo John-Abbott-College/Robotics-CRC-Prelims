@@ -20,4 +20,53 @@ def part_5(turns: int, board: [str]):
     ### You code goes here ###
     ### Votre code va ici ###
 
+    
+    xp : int
+    yp : int
+    platypusCoordinates= ()
+    foodcoordinates= []
+    dotlocation = ()
+    for yp, line in enumerate(board):
+        # = board.index(line)
+        print("yp: ",yp)
+        for xp, c in enumerate(line):
+            if c == 'x':                 
+                    print("Xp: ",xp)
+                    platypusCoordinates= (xp,yp)
+                    break
+            else:
+                print("no platypus at: ",c)
+    print(platypusCoordinates)
+
+    for y2, line in enumerate(board):
+         print("y2", y2)
+         for x2, c in enumerate(line):
+              if c== '.':
+                   print("found food at x: ",x2)
+                   dotlocation = (x2, y2)
+                   foodcoordinates.append(dotlocation)
+    print(foodcoordinates)
     return final_answer
+
+    
+
+
+part_5(turns = 11, 
+        board = [
+            "___x_.________._",
+            "_______.________",
+            "_________..___._",
+            "_.__._____.____.",
+            "_________.__.___",
+            ".____________._.",
+            "_.__________.___",
+            "__.______..__.__",
+            "____._______.___",
+            ".__.___.________",
+            "______._________",
+            "____..._____.___",
+            "__..___.._______",
+            "_______________.",
+            "________._._____",
+            "____.._______.__",
+        ])
