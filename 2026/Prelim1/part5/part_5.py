@@ -29,6 +29,7 @@ uses a c-level for loop which runs much fast for these styles of questions.
 """
 Position = (int,int)
 Board = [[list]]
+
 def find_char(board:Board, char:str)->list[Position]:
     """Scans the board to find all the position where a given character is found"""
     coords = [(x,y) for y,line in enumerate(board) for x,c in enumerate(line) if c == char]
@@ -87,11 +88,11 @@ def nearest(sorted_foods:list[(int,Position)], platypus:Position):
 
     # Gets the displacement vector
 
-    # Sorting based on the displacement tuple delta_x, delta_y
-    # This will prioritize smaller delta_x (left/right movements)
-    # then, smaller delta_y (top/bottom movements)
+    # Sorting descending order based on the displacement tuple delta_x, delta_y
+    # This will prioritize larger delta_x (left/right movements)
+    # over delta_y (top/bottom movements)
 
-    sorted_nearest = sorted(nearest_foods, key=lambda f: displacement(platypus,f))
+    sorted_nearest = sorted(nearest_foods, key=lambda f: displacement(platypus,f), reverse=True)
 
     # Note: This can be further simplified by calculating the
 
@@ -172,7 +173,7 @@ def part_5(turns: int, board: [str]):
         test_board[yp][xp] = "_"
         test_board[new_y][new_x]= "x"
         platypus = (new_x, new_y)
-
+              
         if attempts ==0:
             break
 
@@ -188,13 +189,12 @@ if __name__ == "__main__":
         "__________",
         "____._____",
         "__________",
-        "____x____",
+        "____x_.___",
         "__________",
         "__________",
         "__________",
         "____._____"
     ]
-
 
 
     print(part_5(4, test_board))
