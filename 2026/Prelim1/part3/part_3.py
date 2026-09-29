@@ -15,8 +15,18 @@ def part_3(sentence: str):
     Returns:
         [int]: The position of the letters found
     """
-
+    word = "ornithorynque"
     positions = []
+    ### You code goes here ###
+    ### Votre code va ici ###
+    
+    for x in word:
+        char= sentence.find(x)
+        if char in positions:
+            char = sentence.find(x, char+1)
+        positions.append(char)
 
+    print(positions)
     return positions
 
+part_3("Platypus is the best animal in the world.")
