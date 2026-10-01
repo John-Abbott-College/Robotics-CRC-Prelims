@@ -4,7 +4,7 @@
 # To run the test run the command pytest in the terminal being in the right folder (go see test instructions if needed)
 # Pour rouler les tests avec pytest utilisez le terminal dans le bon folder et exécutez la commande pytest (voir le fichier donnée sur les tests)
 
-from part_2 import part_2
+from part2.part_2 import part_2
 
 
 def test_from_problem_description():
