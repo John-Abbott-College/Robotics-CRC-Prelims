@@ -3,7 +3,7 @@ import difflib                      # imported for tests
 import time                         # imported for tests
 import traceback                    # imported for tests
 
-import numpy as np
+
 def solve(dough: list[list[str]], size: int) -> int:
     """
     Return the number of size x size biscuits cut from the dough that contain
@@ -24,7 +24,6 @@ def solve(dough: list[list[str]], size: int) -> int:
     answer = 0   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
-
 
 
 

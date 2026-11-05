@@ -2,16 +2,13 @@ from __future__ import annotations  # imported for tests
 import difflib                      # imported for tests
 import time                         # imported for tests
 import traceback                    # imported for tests
+
 import re
 
-WORDS_SPACE_PATTERN:str = r"[a-zA-Z|\s|,|.]+"
-r"-?\d+(?:\.\d+)?"
-NUMERIC_PATTERN:str = r"-?\d+(?:\.\d+)?"
 TIME_EXTRA_COOKIE: int = 1
 COOKIE_COUNT:int = 5
-def contains_str(line:str, target_str:str)->bool:
-    pattern = f"{WORDS_SPACE_PATTERN}{target_str}{WORDS_SPACE_PATTERN}"
-    return bool(re.match(pattern,line))
+
+
 
 
 def solve(num_of_cookies: int, recipe: list[str]) -> list[str]:
@@ -33,6 +30,7 @@ def solve(num_of_cookies: int, recipe: list[str]) -> list[str]:
     answer = []   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+
     for line in recipe:
         numeric_match = re.search(r"\d+\.?\d*", line)
 

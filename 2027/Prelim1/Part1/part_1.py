@@ -23,6 +23,7 @@ def solve(cookies: list[str], username: str, random_text: str) -> str:
     answer = ""   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+
     first_chars = username[0:5]
 
     for cookie in cookies:

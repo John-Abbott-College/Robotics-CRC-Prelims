@@ -24,10 +24,12 @@ def solve(c: int, p: float, q: int) -> list[int]:
     answer = []   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+
     must_sell = math.ceil(c/p)
     profit = q*p - c
 
     answer = [must_sell, profit]
+
 
     return answer
 

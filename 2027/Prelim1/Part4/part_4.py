@@ -3,6 +3,7 @@ import difflib                      # imported for tests
 import time                         # imported for tests
 import traceback                    # imported for tests
 
+
 def diff(list1:list[int], list2:list[int])->int:
     return sum(1 for it1,it2 in zip(list1,list2) if it1 != it2)
 
@@ -25,11 +26,13 @@ def solve(belt: list[int]) -> str:
     answer = "NO"   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+
     belt_sorted = belt.copy()
     belt_sorted.sort()
 
     if diff(belt, belt_sorted) <=2:
         answer = "YES"
+
 
     return answer
 
