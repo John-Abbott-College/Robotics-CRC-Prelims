@@ -3,7 +3,9 @@ import difflib                      # imported for tests
 import time                         # imported for tests
 import traceback                    # imported for tests
 
-
+import numpy as np
+def has_c(array, char="C"):
+    return char in array
 def solve(dough: list[list[str]], size: int) -> int:
     """
     Return the number of size x size biscuits cut from the dough that contain
@@ -24,8 +26,16 @@ def solve(dough: list[list[str]], size: int) -> int:
     answer = 0   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    dough_np = np.array(dough)
+    width, height = dough_np.shape
 
-
+    for y in range(0, height, size):
+        stop_y = min(y+size, height)
+        for x in range(0, width, size):
+            stop_x = min(x+size, width)
+            sub_dough = dough_np[x:stop_x,y:stop_y]
+            if not has_c(sub_dough):
+                answer += 1
 
     return answer
 
@@ -384,5 +394,20 @@ if __name__ == "__main__":
     #  `python fichier.py`), Python met __name__ à "__main__" et les tests
     #  démarrent immédiatement.
     # ----
+    test_9 =            [
+                ["P", "C", "P", "C", "C", "P", "P", "C"],
+                ["P", "P", "C", "C", "P", "P", "C", "P"],
+                ["C", "C", "P", "P", "P", "P", "P", "P"],
+                ["P", "P", "P", "P", "P", "P", "C", "C"],
+                ["P", "P", "P", "C", "P", "P", "C", "C"],
+                ["C", "P", "P", "P", "C", "P", "P", "P"],
+                ["C", "C", "P", "P", "P", "C", "P", "P"],
+                ["P", "P", "C", "P", "P", "C", "P", "C"],
+                ["P", "P", "C", "P", "P", "C", "P", "C"],
+            ]
+    print(solve(test_9, 2))
     main()
+
+
+
 

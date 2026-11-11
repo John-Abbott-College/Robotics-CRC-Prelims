@@ -2,6 +2,15 @@ from __future__ import annotations  # imported for tests
 import difflib                      # imported for tests
 import time                         # imported for tests
 import traceback                    # imported for tests
+import math
+def are_overlapping(circle1, circle2):
+    c1_x, c1_y, r1 = circle1
+    c2_x, c2_y, r2 = circle2
+
+    dist = math.sqrt((c1_x - c2_x)**2 + (c1_y - c2_y)**2)
+
+    # Overlaps or touch
+    return dist <= r1+ r2
 
 
 def solve(cookies: list[tuple[float, float, float]]) -> bool:
