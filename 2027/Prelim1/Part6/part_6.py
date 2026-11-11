@@ -29,7 +29,15 @@ def solve(cookies: list[tuple[float, float, float]]) -> bool:
     answer = True   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    for current_index, cookie in enumerate(cookies):
 
+        for next_cookie in cookies[min(current_index+1, len(cookies)):]:
+            if are_overlapping(cookie, next_cookie):
+                answer = False
+                break
+        if not answer:
+            # break out of the outer loop as well, avoids unnecessary iterations.
+            break
 
     return answer
 

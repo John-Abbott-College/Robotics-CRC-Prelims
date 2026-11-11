@@ -5,7 +5,9 @@ import traceback                    # imported for tests
 
 import numpy as np
 def has_c(array, char="C"):
+    """Helper function that checks if a character is present in an array"""
     return char in array
+
 def solve(dough: list[list[str]], size: int) -> int:
     """
     Return the number of size x size biscuits cut from the dough that contain
@@ -27,7 +29,7 @@ def solve(dough: list[list[str]], size: int) -> int:
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
     dough_np = np.array(dough)
-    width, height = dough_np.shape
+    width, height = dough_np.shape # just gets the length along x and along y.
 
     for y in range(0, height, size):
         stop_y = min(y+size, height)
