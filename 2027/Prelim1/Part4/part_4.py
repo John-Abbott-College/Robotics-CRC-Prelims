@@ -30,6 +30,10 @@ def solve(belt: list[int]) -> str:
     belt_sorted = belt.copy()
     belt_sorted.sort()
 
+    # TODO: Note to self, misunderstood question, it's not
+    # two positions that get swapped but the entire group of
+    # wrong positions that get reversed. Should store
+    # the
     if diff(belt, belt_sorted) <=2:
         answer = "YES"
 
