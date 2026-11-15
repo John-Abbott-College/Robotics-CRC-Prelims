@@ -4,9 +4,6 @@ import time                         # imported for tests
 import traceback                    # imported for tests
 
 
-def diff(list1:list[int], list2:list[int])->int:
-    return sum(1 for it1,it2 in zip(list1,list2) if it1 != it2)
-
 
 def solve(belt: list[int]) -> str:
     """
@@ -26,15 +23,30 @@ def solve(belt: list[int]) -> str:
     answer = "NO"   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    def find_wrong_positions(original: list[int], sorted : list[int]):
+        return [p for p,s in zip(original, sorted) if p !=s]
 
-    belt_sorted = belt.copy()
-    belt_sorted.sort()
+    belt_sorted = sorted(belt)
 
+    if belt == belt_sorted:
+        answer  = "YES"
+        return answer
     # TODO: Note to self, misunderstood question, it's not
     # two positions that get swapped but the entire group of
     # wrong positions that get reversed. Should store
     # the
-    if diff(belt, belt_sorted) <=2:
+    wrong_positions = find_wrong_positions(belt, belt_sorted)
+    swap_positions = wrong_positions[::-1]
+
+    fixed_positions = []
+    for b in belt:
+        if b not in wrong_positions:
+            fixed_positions.append(b)
+        else:
+            f = swap_positions.pop(0)
+            fixed_positions.append(f)
+
+    if fixed_positions == belt_sorted:
         answer = "YES"
 
 
@@ -374,5 +386,6 @@ if __name__ == "__main__":
     #  `python fichier.py`), Python met __name__ à "__main__" et les tests
     #  démarrent immédiatement.
     # ----
+
     main()
 
