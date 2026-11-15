@@ -23,7 +23,14 @@ def solve(cookies: list[str], username: str, random_text: str) -> str:
     answer = ""   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    """Gabriel's solution"""
+    for cookie in cookies:
+        if cookie[:5] == username[:5]:
+            answer = cookie
+            return answer
+    answer = f"{username[:5]}{random_text}"
 
+    return answer
 
     return answer
 

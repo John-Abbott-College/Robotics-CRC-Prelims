@@ -22,8 +22,14 @@ def solve(belt: list[int]) -> str:
     answer = "NO"   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
-
-
+    """Kiran's solution"""
+    sorted_belt = sorted(belt)
+    wrongs = []
+    for x in range(len(sorted_belt)):
+        if belt[x] != sorted_belt[x]:
+            wrongs.append(belt[x])
+    if wrongs[::-1] == sorted(wrongs):
+        answer = "YES"
     return answer
 
 
@@ -360,5 +366,6 @@ if __name__ == "__main__":
     #  `python fichier.py`), Python met __name__ à "__main__" et les tests
     #  démarrent immédiatement.
     # ----
+
     main()
 

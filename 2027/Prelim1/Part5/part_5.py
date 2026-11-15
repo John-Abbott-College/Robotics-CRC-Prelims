@@ -24,9 +24,22 @@ def solve(dough: list[list[str]], size: int) -> int:
     answer = 0   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    """Sam's solution"""
+    for y in range(0, len(dough), size):
+        for x in range(0, len(dough[y]), size):
+            no_chips = True
+            for i in range(size):
+                lim = min(x + size, len(dough[y + i]))
+                if y + i > len(dough):
+                    break
+                if "C" in dough[y + i][x:lim]:
+                    no_chips = False
+            if no_chips:
+                answer += 1
 
 
     return answer
+
 
 
 # #############################################################################

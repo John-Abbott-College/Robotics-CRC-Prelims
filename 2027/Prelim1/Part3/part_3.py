@@ -3,6 +3,8 @@ import difflib                      # imported for tests
 import time                         # imported for tests
 import traceback                    # imported for tests
 
+from aiohttp.hdrs import COOKIE
+
 
 def solve(num_of_cookies: int, recipe: list[str]) -> list[str]:
     """
@@ -23,6 +25,37 @@ def solve(num_of_cookies: int, recipe: list[str]) -> list[str]:
     answer = []   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    """Karim's solution"""
+    import re
+
+    INT_PATTERN = "[0-9]+"
+    TIME_EXTRA_COOKIE= 1
+    COOKIE_COUNT= 5
+
+    def rescale(quantity: int, count: int):
+        new_quantity = quantity * count
+        return new_quantity
+
+    for i, line in enumerate(recipe):
+        num = re.findall(INT_PATTERN, line)
+
+        if line.find("oven") > 0:      # oven line
+            answer.append(line)
+        elif line.find("minutes") > 0:  # cook time line
+            cook_time = int(num[0])
+
+            if num_of_cookies >= 6:
+                cook_time = cook_time + (num_of_cookies - COOKIE_COUNT)
+
+            new_line = re.sub(INT_PATTERN, str(cook_time), line)
+            answer.append(new_line)
+        else: #any other line
+            if len(num) > 0:  #with a number
+                num = rescale(int(num[0]), num_of_cookies)
+                new_line = re.sub(INT_PATTERN, str(num), line)
+                answer.append(new_line)
+            else: #without a number
+                answer.append(line)
 
 
     return answer

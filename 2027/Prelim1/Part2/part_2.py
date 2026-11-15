@@ -24,7 +24,16 @@ def solve(c: int, p: float, q: int) -> list[int]:
     answer = []   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    """Gabriel's solution"""
 
+    import math
+    break_even = math.ceil(c/p)
+    profit = q*p - c
+    answer.append(break_even)
+    answer.append(profit)
+
+
+    return answer
 
     return answer
 

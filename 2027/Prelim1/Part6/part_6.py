@@ -20,7 +20,16 @@ def solve(cookies: list[tuple[float, float, float]]) -> bool:
     answer = True   # starter value / valeur de départ
     ### YOUR CODE GOES HERE ###
     ### VOTRE CODE VA ICI ###
+    """Sam's solution """
+    import math
 
+    for index_cookie, cookie in enumerate(cookies):
+        index_next_cookie = index_cookie + 1
+        if index_next_cookie < len(cookies): #avoids index out of range
+            for cookie2 in cookies[index_next_cookie:]:
+                dist = math.sqrt((cookie[0] - cookie2[0])**2 + (cookie[1] - cookie2[1])**2)
+                if dist <= cookie[2] + cookie2[2]:
+                    return False
 
     return answer
 
